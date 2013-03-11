@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>做自己的主人</title>
+<style>
+			form {
+				margin: 0;
+			}
+			textarea {
+				display: block;
+			}
+		</style>
+<script charset="utf-8" src="./WEB-INF/js/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="./WEB-INF/js/kindeditor/lang/zh_CN.js"></script>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			allowFileManager : true
+		});
+		K('input[name=getHtml]').click(function(e) {
+			alert(editor.html());
+		});
+		K('input[name=isEmpty]').click(function(e) {
+			alert(editor.isEmpty());
+		});
+		K('input[name=getText]').click(function(e) {
+			alert(editor.text());
+		});
+		K('input[name=selectedHtml]').click(function(e) {
+			alert(editor.selectedHtml());
+		});
+	});
+	// 同步数据后可以直接取得textarea的value
+	editor.sync();
+</script>
+</head>
+<body>
+	<form>
+		<textarea name="content"
+			style="width: 800px; height: 400px; visibility: hidden;">KindEditor</textarea>
+		<p>
+			<input type="button" name="getHtml" value="取得HTML" /> 
+			<input type="button" name="isEmpty" value="判断是否为空" />
+			<input type="button" name="getText" value="取得文本(包含img,embed)" /> 
+			<input type="button" name="selectedHtml" value="取得选中HTML" />
+		</p>
+	</form>
+</body>
+</html>
